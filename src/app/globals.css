@@ -1,5 +1,13 @@
 @import "tailwindcss";
+@font-face {
+    font-family: 'DM Sans';
+    src: url('/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
 @theme{
+    --font-dm: 'DM Sans', sans-serif;
     --color-red: #600214;
     --color-red-light: #c09aa1;
     --color-red-text: #701b2b;

@@ -1,7 +1,11 @@
-export default function Home() {
+import Home from "./componentes/home";
+
+export const metadata = {
+    title: "Coradir Seguridad",
+    description: "Coradir Seguridad",
+}
+export default function Page() {
   return (
-    <div className="bg-red-900 h-screen">
-       
-    </div>
+    <Home />
   );
 }
