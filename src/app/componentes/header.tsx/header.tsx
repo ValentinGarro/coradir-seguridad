@@ -1,8 +1,8 @@
 "use client"
-import { transform } from "next/dist/build/swc/generated-native";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import MenuMobile from "./components/menuMobile";
+import MenuMobile from "./components/menuMobile";  
+import { useMediaQuery } from "@/hooks/useMediaQury";
 
 export default function Header() {
     const [show, setShow] = useState(true);
@@ -11,7 +11,9 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
     const [isRedBg, setIsRedBg] = useState( pathname === "/contacto"); 
+    const isMobile = useMediaQuery("(max-width: 768px)");
     useEffect(() => {
+        if(pathname === "/contacto") return;
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             setScrolled(currentScrollY > 10);
@@ -26,6 +28,7 @@ export default function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]); 
     useEffect(()=>{
+        if(pathname === "/contacto") return;
         if(!openMenu){
             setTimeout(()=>setIsRedBg(false), 500)
         }else{
@@ -75,7 +78,7 @@ export default function Header() {
                 </div>
                 <span className="block h-0.5 bg-white w-[99%] rounded-2xl mx-auto  mt-2" style={{display: isRedBg ? 'none' : 'block'}}></span> 
             </header>
-             <MenuMobile openMenu={openMenu} /> 
+            {isMobile && <MenuMobile openMenu={openMenu} />}
         </>
     );
 }
