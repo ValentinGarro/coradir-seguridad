@@ -1,3 +1,4 @@
+import Header from "./componentes/header.tsx/header";
 import "./globals.css"; 
 
 export default function RootLayout({
@@ -7,7 +8,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="font-dm">
+      <body className="font-dm ">
+        <Header />
         {children}
       </body>
     </html>
