@@ -8,17 +8,17 @@ export const socialMedia = [
     { href: "https://www.linkedin.com/company/502705", img:"/icons/linkedin.png", ariaLabel:"Logo de LinkedIn", alt:"Logo de LinkedIn" },
     { href: "#", img:"/icons/instagram.png", ariaLabel:"Logo de Instagram", alt:"Logo de Instagram" },
 ];
+export const ourSites = [
+    { href: "#", label:"Coradir S.A", ariaLabel:"Coradir S.A"  },
+    { href: "#", label:"Energía renovable", ariaLabel:"Energía renovable"  },
+    { href: "#", label:"Movilidad Eléctrica", ariaLabel:"Movilidad Eléctrica"  },
+    { href: "#", label:"CORADIR Homes", ariaLabel:"CORADIR Homes"  },
+    { href: "#", label:"IACOR", ariaLabel:"IACOR"  },
+];
+export const products = [
+    { href: "#", label:"Dispositivos de alarmas personales", ariaLabel:"Dispositivos de alarmas personales"  }, 
+];
 export default function MenuMobile({openMenu}: {openMenu: boolean}) { 
-    const ourSites = [
-        { href: "#", label:"Coradir S.A", ariaLabel:"Coradir S.A"  },
-        { href: "#", label:"Energía renovable", ariaLabel:"Energía renovable"  },
-        { href: "#", label:"Movilidad Eléctrica", ariaLabel:"Movilidad Eléctrica"  },
-        { href: "#", label:"CORADIR Homes", ariaLabel:"CORADIR Homes"  },
-        { href: "#", label:"IACOR", ariaLabel:"IACOR"  },
-    ];
-    const products = [
-        { href: "#", label:"Dispositivos de alarmas personales", ariaLabel:"Dispositivos de alarmas personales"  }, 
-    ];
     useEffect(() => {
         document.body.style.overflow = openMenu ? 'hidden' : 'auto';
     }, [openMenu]);
@@ -35,7 +35,7 @@ export default function MenuMobile({openMenu}: {openMenu: boolean}) {
     }
     return (
         <article
-            className={`fixed left-0 flex flex-col justify-center items-center pt-10 px-1 gap-2 bg-white w-full min-h-[100vh] transition-all duration-500 ease-in-out ${openMenu ? 'translate-x-0' : 'translate-x-[100vw]'}`}
+            className={`z-[200] fixed left-0 flex flex-col justify-center items-center pt-10 px-1 gap-2 bg-white w-full min-h-[100vh] transition-all duration-500 ease-in-out ${openMenu ? 'translate-x-0' : 'translate-x-[100vw]'}`}
         >
             <Link href="/contacto" className={`px-5 py-2 bg-red text-white rounded-xl text-xl cursor-pointer  ${openMenu ? 'scale-100 translate-x-0' : 'scale-0 translate-x-[100vw]'}  delay-300 transition-all duration-300 ease-in-out`} aria-label="Comunicate con nosotros">Comunicate con nosotros</Link>
             <div className={`flex flex-col justify-start items-center w-[90%] delay-300 ease-in-out transition-all duration-300  h-[25em] ${openMenu ? 'scale-100 translate-x-0' : 'scale-0 translate-x-[100vw]'}`}>
@@ -51,8 +51,8 @@ export default function MenuMobile({openMenu}: {openMenu: boolean}) {
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${ourSitesMenu ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                     {
-                        ourSites.map((site, index) => (
-                            <Link href={site.href} key={`site-${index}`} className="p-2 text-xl text-black w-full text-left flex items-center justify-between cursor-pointer" aria-label={site.ariaLabel}>{site.label}</Link>
+                        ourSites.map((site, index) => ( 
+                            <Link href={site.href} key={`site-${index}`} className="p-2 text-xl text-black  text-left flex items-center justify-between cursor-pointer underline w-56" aria-label={site.ariaLabel}>{site.label}</Link>
                         ))
                     }
                 </div>
@@ -68,7 +68,7 @@ export default function MenuMobile({openMenu}: {openMenu: boolean}) {
                 <div className={`overflow-hidden transition-all duration-300 ${productMenu ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                     {
                         products.map((product, index) => (
-                            <Link href={product.href} key={`product-${index}`} className="p-2 text-xl text-black w-full text-left flex items-center justify-between cursor-pointer" aria-label={product.ariaLabel}>{product.label}</Link>
+                            <Link href={product.href} key={`product-${index}`} className="p-2 text-xl text-black  text-left flex items-center justify-between cursor-pointer underline w-56" aria-label={product.ariaLabel}>{product.label}</Link>
                         ))
                     }
                 </div>

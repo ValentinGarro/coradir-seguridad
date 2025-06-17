@@ -1,4 +1,4 @@
-import Home from "./componentes/home";
+import Home from "./componentes/home/home";
 
 export const metadata = {
     title: "Coradir Seguridad",

@@ -1,6 +1,6 @@
 import Header from "./componentes/header.tsx/header";
 import "./globals.css"; 
-
+import Footer from "./componentes/footer/footer";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -11,6 +11,7 @@ export default function RootLayout({
       <body className="font-dm ">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
