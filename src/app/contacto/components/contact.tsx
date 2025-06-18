@@ -3,10 +3,15 @@
 import { useForm } from "react-hook-form";
 import { FormSchema, InputForm } from "./formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef } from "react";
-import CustomInput from "./customInput";
+import { useRef, useState } from "react";
+import CustomInput from "./customInput"; 
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import Loader from "./loader";
 
 export default function Contact() {
+    const [loading, setLoading] = useState(false);
+    const [submitMessage, setSubmitMessage] = useState({ type: '', text: '' });
+    const {executeRecaptcha} = useGoogleReCaptcha();
     const form = useForm<FormSchema>({
         resolver: zodResolver(FormSchema),
         mode: "onChange",
@@ -17,10 +22,7 @@ export default function Contact() {
             message: "",
         },
     });
-    const { handleSubmit, formState: { errors , isSubmitting }, control }=form;
-    const onSubmit = (data: FormSchema) => {
-        console.log(data);
-    };
+    const { handleSubmit, formState: { errors , isSubmitting }, control, reset }=form;
     const inputs: InputForm[] = [
         {
             name: "name",
@@ -47,6 +49,68 @@ export default function Contact() {
             ref: useRef<HTMLInputElement>(null),
         },
     ];
+    const onSubmit = async (data:FormSchema) => { 
+        setLoading(true);
+        try{
+            if (!executeRecaptcha) throw new Error('Debes completar el captcha.'); 
+            const token = await executeRecaptcha('form_submit');
+            const verifyCaptcha = await fetch('/api/verify-captcha', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token }),
+            });
+            const verifyCaptchaJson = await verifyCaptcha.json(); 
+            if (!verifyCaptchaJson.ok) throw new Error(verifyCaptchaJson.error); 
+
+        }catch(error : any){ 
+            setSubmitMessage({
+                type: 'error',
+                text: error.message,
+            });
+            setLoading(false);
+            return;
+        }
+       
+        const dataToSend = {
+            name: data.name.trim(),
+            email: data.email.trim().toLowerCase(),
+            phone: data.phone?.trim() || null, 
+            message: data.message?.trim() || null,
+            timestamp: new Date().toISOString(),
+            source: 'website_coradir_seguridad_form'
+          };
+        try { 
+            const response = await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL!, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend)
+            });
+        
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+            setSubmitMessage({
+                type: 'success',
+                text: '¡Gracias por tu interés! Hemos recibido tu solicitud y te contactaremos pronto.',
+            });
+        } catch (error) { 
+            setLoading(false);
+            setSubmitMessage({
+                type: 'error',
+                text: 'Hubo un error al enviar tu solicitud. Por favor, intenta nuevamente.',
+            });
+            return;
+        }  
+        setTimeout(() => {
+            setSubmitMessage({ type: '', text: '' });
+            reset(); 
+        }, 5000);
+        setLoading(false);
+    }; 
     return (
         <section className="flex flex-col pt-30 justify-start items-center container   min-h-[100vh]"
             style={{
@@ -58,27 +122,42 @@ export default function Contact() {
         >
             <section className="w-[90%] flex flex-col items-center">
                 <h1 className="text-red text-5xl font-bold text-shadow">COMUNICATE<br/> CON NOSOTROS</h1>
-                <form onSubmit={handleSubmit(onSubmit)} className="py-5 flex flex-col items-center w-[80%]">
-                    {inputs.map((input)=>(
-                        <CustomInput 
-                            key={input.name} 
-                            {...input} 
-                            control={control} 
-                            errors={errors}  
-                        />
-                    ))}  
-                    <button 
-                        type="submit" 
-                        disabled={isSubmitting || Object.keys(errors).length > 0}
-                        className="py-5 w-full mx-auto bg-red-light text-white rounded-2xl uppercase"
-                        style={{
-                            opacity: isSubmitting || Object.keys(errors).length > 0 ? 0.7 : 1,
-                            cursor: isSubmitting || Object.keys(errors).length > 0 ? 'not-allowed' : 'pointer'
-                        }}
-                    >
-                        {isSubmitting ? "Enviando..." : "Enviar"}
-                    </button>  
-                </form>
+                { loading ? (
+                    <Loader/>
+                ):(submitMessage.type === 'success' ? (
+                    <section className="flex flex-col items-center justify-center gap-5 bg-red-light p-10 rounded-2xl mt-10">
+                        <h2 className="w-full text-sm md:text-xl text-white font-raleway text-center">{submitMessage.text}</h2>
+                         
+                    </section>
+                    ):(
+                        <form onSubmit={handleSubmit(onSubmit)} className="py-5 flex flex-col items-center w-[80%]">
+                            {submitMessage.type === 'error' && (
+                                    <div className="mb-6 p-4 rounded-md text-sm bg-red-light text-white md:text-xl text-shadow">
+                                        {submitMessage.text}
+                                    </div>
+                                )}
+                            {inputs.map((input)=>(
+                                <CustomInput 
+                                    key={input.name} 
+                                    {...input} 
+                                    control={control} 
+                                    errors={errors}  
+                                />
+                            ))}  
+                            <button 
+                                type="submit" 
+                                disabled={isSubmitting || Object.keys(errors).length > 0}
+                                className="py-5 w-full mx-auto bg-red-light text-white rounded-2xl uppercase"
+                                style={{
+                                    opacity: isSubmitting || Object.keys(errors).length > 0 ? 0.7 : 1,
+                                    cursor: isSubmitting || Object.keys(errors).length > 0 ? 'not-allowed' : 'pointer'
+                                }}
+                            >
+                                {isSubmitting ? "Enviando..." : "Enviar"}
+                            </button>  
+                        </form>
+                    )
+                )}
             </section>
         </section>
     );

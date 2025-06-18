@@ -56,7 +56,7 @@ export default function CustomInput({
                     <div className="flex flex-col items-center justify-center gap-2 py-4 text-white w-full">
                         <label htmlFor={name} className=" text-2xl w-full">{label}</label>
                         {render(e)}
-                        {errors[name] && <p className="text-white text-shadow text-sm mt-2 h-5 text-left w-[80%]">
+                        {errors[name] && <p className="text-white text-shadow text-sm mt-2 h-5 text-left w-full">
                             {(errors[name].message)}*
                         </p>}
                     </div>

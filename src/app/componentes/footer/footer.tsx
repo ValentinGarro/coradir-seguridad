@@ -18,13 +18,13 @@ export default function Footer() {
             <h4  className=" text-xl w-full text-left mt-5 font-bold" > Productos   </h4>                  
             {
                 products.map((product, index) => (
-                    <Link href={product.href} key={`product-${index}`} className="p-1 text-xl text-left flex items-center justify-between cursor-pointer" aria-label={product.ariaLabel}>{product.label}</Link>
+                    <Link href={product.href} key={`product-${index}`} className="p-2 text-xl text-left flex items-center justify-between cursor-pointer" aria-label={product.ariaLabel}>{product.label}</Link>
                 ))
             }   
             <h3 className="text-xl font-bold mt-5">Empresa </h3>
-            <Link href="/contacto" className="text-lg" aria-label="Contacto">Contacto</Link>
-            <Link href="/#" className="text-lg" aria-label="Sobre nosotros">Sobre nosotros</Link>
-            <span className="flex items-center justify-start md:justify-start gap-3   text-white mt-4">
+            <Link href="/contacto" className="text-lg p-2" aria-label="Contacto">Contacto</Link>
+            <Link href="/#" className="text-lg p-2" aria-label="Sobre nosotros">Sobre nosotros</Link>
+            <span className="flex items-center justify-start md:justify-start gap-3 p-2  text-white mt-4">
                 {
                     socialMedia.map((social, index) => (
                         <a href={social.href} key={`social-${index}`} className="hover:shadow-[0_1px_5px_rgba(255,255,255,0.3)]">
