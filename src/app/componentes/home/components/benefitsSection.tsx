@@ -1,5 +1,9 @@
+"use client"
 import Image from "next/image"
 import BenefitsCard, { BenefitsCardProps } from "./benefitsCard"
+import { motion } from "framer-motion"
+import { useRef } from "react"
+import { useInView } from "framer-motion"
 
 export default function BenefitsSection() {
     const benefits:BenefitsCardProps[] = [
@@ -28,6 +32,8 @@ export default function BenefitsSection() {
             description: "Compatible con sistemas de seguridad existentes en su institución." 
         },
     ]
+    const linkRef = useRef(null);
+    const isInView = useInView(linkRef, { amount: 0.5, once: false });
     return (
         <section className="flex flex-col items-start justify-start w-[70%] mx-auto gap-5 pb-10">
             <div className="z-10 relative w-full ">
@@ -38,16 +44,24 @@ export default function BenefitsSection() {
                     <BenefitsCard key={index} {...benefit} hr={ index !== benefits.length-1 }/>
                 ))}
             </section>
-            <button className="flex items-center justify-center gap-2 text-red font-bold w-full py-1  border-1 border-red-light rounded-3xl my-10">
-                FOLLETO 
-                <Image 
-                    src="/icons/i_01.png" 
-                    alt="Icono de folleto" 
-                    width={1000} 
-                    height={1000}
-                    className="w-12 h-12"
-                />
-            </button>
+            <motion.div
+                ref={linkRef}
+                initial={{ scale: 1 }}
+                animate={isInView ? { scale: 1.1   } : { scale: 1  }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }} 
+                className="w-full"
+            > 
+                <button className="flex items-center justify-center gap-2 text-red font-bold w-full py-1  border-1 border-red-light rounded-3xl my-10">
+                    FOLLETO 
+                    <Image 
+                        src="/icons/i_01.png" 
+                        alt="Icono de folleto" 
+                        width={1000} 
+                        height={1000}
+                        className="w-12 h-12"
+                    />
+                </button>
+            </motion.div>
         </section>
     )
 }
