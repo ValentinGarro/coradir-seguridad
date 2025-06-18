@@ -9,15 +9,25 @@ export default function SafeSection() {
     const isTitleInView = useInView(titleRef, { amount: 0.5, once: false });
     const isLinkInView = useInView(linkRef, { amount: 0.5, once: false });
     return (
-        <section className="flex flex-col items-start justify-start container mx-auto gap-5 pb-10">
-            <div className="w-full bg-red p-8" ref={titleRef}>
+        <section className="flex flex-col items-start justify-start max-w-[1800px]  mx-auto gap-5 pb-10">
+            <div className="w-full  bg-red p-8 xl:px-30" ref={titleRef}>
+                {/*visible en mobile*/}
                 <motion.div
                     initial={{ width: "34%" }}
                     animate={isTitleInView ? { width: ["34%","100%"] } : {}}
                     transition={{ duration: 1.3, ease: "easeOut" }}
-                    className="overflow-hidden w-full h-9"
+                    className="overflow-hidden w-full h-9 xl:hidden  "
                 >
-                    <h2 className="text-4xl text-white text-left w-[80vw]">  <b >SOMOS </b>  <i>SEGURIDAD</i> </h2> 
+                    <h2 className="text-4xl   text-white text-left w-[80vw] ">  <b >SOMOS </b>  <i>SEGURIDAD</i> </h2> 
+                </motion.div>
+                {/*visible en desktop*/}
+                <motion.div
+                    initial={{ width: "10%" }}
+                    animate={isTitleInView ? { width: ["14%","40%"] } : {}}
+                    transition={{ duration: 1.3, ease: "easeOut" }}
+                    className="overflow-hidden w-[20vw] hidden xl:block h-16"
+                >
+                    <h2 className="text-6xl text-white text-left w-[34vw] ">  <b >SOMOS </b>  <i>SEGURIDAD</i> </h2> 
                 </motion.div>
                 <motion.div
                     initial={{ width: 0 }}
@@ -27,7 +37,7 @@ export default function SafeSection() {
                 />
 
             </div>
-            <section className="w-[70%] mx-auto flex flex-col items-center justify-center gap-5 text-xl">
+            <section className="w-[70%] mx-auto flex flex-col items-center justify-center gap-5 xl:gap-16 text-xl xl:text-4xl xl:py-20">
                 <p className="text-black text-left">
                     En <b>CORADIR S.A.</b> trabajamos desde hace más de 30 años desarrollando soluciones tecnológicas que fortalecen la seguridad ciudadana. 
                 </p>
@@ -45,7 +55,7 @@ export default function SafeSection() {
                 initial={{ scale: 1 }}
                 animate={isLinkInView ? { scale: 1.1   } : { scale: 1  }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="text-red font-bold text-center border-1 border-red-light rounded-3xl cursor-pointer py-3 w-full"
+                className="text-red font-bold text-center border-1 border-red-light xl:w-[30%] xl:my-10 rounded-3xl cursor-pointer py-3 w-full"
             > 
                 <Link href="/contacto" >¡SABER MÁS!</Link>
             </motion.div>

@@ -9,7 +9,7 @@ export const socialMedia = [
     { href: "#", img:"/icons/instagram.png", ariaLabel:"Logo de Instagram", alt:"Logo de Instagram" },
 ];
 export const ourSites = [
-    { href: "#", label:"Coradir S.A", ariaLabel:"Coradir S.A"  },
+    { href: "#", label:"CORADIR S.A", ariaLabel:"CORADIR S.A"  },
     { href: "#", label:"Energía renovable", ariaLabel:"Energía renovable"  },
     { href: "#", label:"Movilidad Eléctrica", ariaLabel:"Movilidad Eléctrica"  },
     { href: "#", label:"CORADIR Homes", ariaLabel:"CORADIR Homes"  },
@@ -52,7 +52,7 @@ export default function MenuMobile({openMenu}: {openMenu: boolean}) {
                 <div className={`overflow-hidden transition-all duration-300 ${ourSitesMenu ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                     {
                         ourSites.map((site, index) => ( 
-                            <Link href={site.href} key={`site-${index}`} className="p-2 text-xl text-black  text-left flex items-center justify-between cursor-pointer underline w-56" aria-label={site.ariaLabel}>{site.label}</Link>
+                            <Link href={site.href} key={`site-${index}`} className="p-2 text-xl text-black  text-left flex items-center justify-between cursor-pointer w-56" aria-label={site.ariaLabel}>{site.label}</Link>
                         ))
                     }
                 </div>
@@ -68,7 +68,7 @@ export default function MenuMobile({openMenu}: {openMenu: boolean}) {
                 <div className={`overflow-hidden transition-all duration-300 ${productMenu ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                     {
                         products.map((product, index) => (
-                            <Link href={product.href} key={`product-${index}`} className="p-2 text-xl text-black  text-left flex items-center justify-between cursor-pointer underline w-56" aria-label={product.ariaLabel}>{product.label}</Link>
+                            <Link href={product.href} key={`product-${index}`} className="p-2 text-xl text-black  text-left flex items-center justify-between cursor-pointer w-56" aria-label={product.ariaLabel}>{product.label}</Link>
                         ))
                     }
                 </div>

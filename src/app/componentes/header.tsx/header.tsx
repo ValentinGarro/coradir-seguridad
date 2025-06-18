@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import MenuMobile from "./components/menuMobile";  
 import { useMediaQuery } from "@/hooks/useMediaQury";
 import Link from "next/link";
+import MenuDesktop from "./components/menuDesktop";
 export default function Header() {
     const [show, setShow] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -34,18 +35,22 @@ export default function Header() {
         }else{
             setIsRedBg(openMenu)
         }
-    },[openMenu])
+    },[openMenu]) 
     return (
         <>
             <header
-            className={`fixed top-0 left-0 p-4 w-full z-[9999] 
-                ${show ? 'translate-y-0' : '-translate-y-full transition-transform duration-300'}
-                ${isRedBg ? 'bg-red transition-' : ( scrolled ? 'backdrop-blur-md bg-black/20' : 'bg-transparent')}
+            className={`fixed top-0 left-0 p-4 w-full z-[9999]  xl:left-1/2 xl:-translate-x-1/2
+                ${show ? 'translate-y-0' : '-translate-y-full transition-all duration-500'}
+                ${isRedBg ? 'bg-red xl:bg-red/50' : ( scrolled ? 'backdrop-blur-md bg-black/20' : 'bg-transparent')}
             `}
+            onMouseEnter={() => setIsRedBg(true)}
+            onMouseLeave={() => setIsRedBg(false)}
             >
-                <div className="container flex justify-between items-center">
-                    <Link href="/" className="text-white text-xl uppercase"><b >Coradir</b> <i className="text-white/80">Seguridad</i></Link>
-                    <button 
+                <div className="container flex justify-between items-center xl:items-start xl:py-2 ">
+                    <Link href="/" className="text-white text-xl xl:text-4xl uppercase"><b >Coradir</b> <i className="text-white/80">Seguridad</i></Link>
+                    
+                    {isMobile ? (
+                        <button 
                         className="flex flex-col gap-1 items-center justify-between w-10 min-h-9 p-2 py-2.5 rounded-full border-1 transition-all duration-300"
                         aria-label="Menu"
                         onClick={() => setOpenMenu(!openMenu)}
@@ -75,10 +80,13 @@ export default function Header() {
                             }}
                         ></span>
                     </button>
+                    ) : (
+                        <MenuDesktop isRedBg={isRedBg}/>
+                    )}
                 </div>
-                <span className="block h-0.5 bg-white w-[99%] rounded-2xl mx-auto  mt-2" style={{display: isRedBg ? 'none' : 'block'}}></span> 
+                <span className="block h-0.5 bg-white w-[99%] xl:w-[88%] rounded-2xl mx-auto  mt-2" style={{display: isRedBg ? 'none' : 'block'}}></span> 
             </header>
-            {isMobile && <MenuMobile openMenu={openMenu} />}
+            <MenuMobile openMenu={openMenu} />
         </>
     );
 }

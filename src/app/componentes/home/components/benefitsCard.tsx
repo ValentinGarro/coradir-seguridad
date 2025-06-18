@@ -18,21 +18,23 @@ export default function BenefitsCard({ icon, alt, title, description, hr }: Bene
     return (
         <motion.div 
             ref={cardRef} 
-            className="flex flex-col justify-center items-center gap-5"
+            className="flex flex-col justify-starat items-center xl:flex-row "
             initial={{ scale: 0.7 }}
             animate={isInView ? { scale: 1 } : {   }}
             transition={{ duration: 0.5, ease: "easeOut" }}
         >
-            <Image
-                src={icon}
-                alt={alt}
-                width={1000}
-                height={1000}
-                className="w-40 h-40 object-contain"
-            />
-            <h3 className="text-2xl font-bold text-white bg-red px-5 py-2 rounded-tr-2xl rounded-bl-2xl text-center">{title}</h3>
-            <p className="text-lg text-black text-center w-[70%]">{description}</p>
-            {hr && <hr className="w-full h-[0.5px] bg-black"/>}
+            <div className="flex flex-col items-center gap-5 p-5">
+                <Image
+                    src={icon}
+                    alt={alt}
+                    width={1000}
+                    height={1000}
+                    className="w-40 h-40 object-contain"
+                />
+                <h3 className="text-2xl xl:text-3xl font-bold text-white bg-red px-5 py-2 rounded-tr-2xl rounded-bl-2xl text-center xl:min-h-28">{title}</h3>
+                <p className="text-lg text-black text-center xl:text-2xl w-[70%] xl:min-h-28 xl:w-[90%]">{description}</p>
+            </div>
+            {hr && <hr className="w-full h-[0.5px] xl:w-[1px] xl:h-[60%] bg-black"/>}
         </motion.div>
     )
 }

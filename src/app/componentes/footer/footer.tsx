@@ -8,42 +8,52 @@ export default function Footer() {
         return null;
     }
     return (
-        <footer className="flex flex-col items-start justify-start container bg-red p-10 text-white">
-            <h4  className="text-xl w-full text-left font-bold" > Nuestros sitios   </h4>
-            {
-               ourSites.map((site, index) => ( 
-                    <Link href={site.href} key={`site-${index}`} className="p-2 text-lg  text-left" aria-label={site.ariaLabel}>{site.label}</Link>
-                ))
-            } 
-            <h4  className=" text-xl w-full text-left mt-5 font-bold" > Productos   </h4>                  
-            {
-                products.map((product, index) => (
-                    <Link href={product.href} key={`product-${index}`} className="p-2 text-xl text-left flex items-center justify-between cursor-pointer" aria-label={product.ariaLabel}>{product.label}</Link>
-                ))
-            }   
-            <h3 className="text-xl font-bold mt-5">Empresa </h3>
-            <Link href="/contacto" className="text-lg p-2" aria-label="Contacto">Contacto</Link>
-            <Link href="/#" className="text-lg p-2" aria-label="Sobre nosotros">Sobre nosotros</Link>
-            <span className="flex items-center justify-start md:justify-start gap-3 p-2  text-white mt-4">
-                {
-                    socialMedia.map((social, index) => (
-                        <a href={social.href} key={`social-${index}`} className="hover:shadow-[0_1px_5px_rgba(255,255,255,0.3)]">
-                            <Image       
-                                loading="lazy"
-                                aria-label={social.ariaLabel}
-                                src={social.img}
-                                alt={social.alt}
-                                width={600}
-                                height={600}
-                                className="w-6 h-6 xl:w-8 xl:h-8"
-                            />
-                        </a>
-                    ))
-                }
-            </span> 
-            <hr className="w-full h-[1px] bg-white my-5" />
-            <p className="text-white text-xl uppercase w-full text-center mb-2"><b >Coradir S.A.</b>  </p>
-            <p className="text-white text-xs uppercase w-full text-center ">© Todos los derechos reservados.</p>
+        <footer className="flex flex-col items-start justify-start max-w-[1800px] mx-auto bg-red p-10 text-white">
+            <section className="flex flex-col xl:flex-row w-full items-start justify-center xl:justify-between xl:px-30">
+                <div className="flex flex-col items-start justify-start gap-1">
+                    <h4  className="text-xl w-full text-left font-bold xl:text-4xl" > Nuestros sitios   </h4>
+                    {
+                    ourSites.map((site, index) => ( 
+                            <Link href={site.href} key={`site-${index}`} className="p-2 text-lg xl:text-2xl text-left" aria-label={site.ariaLabel}>{site.label}</Link>
+                        ))
+                    } 
+                </div>
+                <div className="flex flex-col items-start justify-start gap-1">
+                    <h4  className=" text-xl w-full text-left mt-5 xl:mt-0 font-bold xl:text-4xl" > Productos   </h4>                  
+                    {
+                        products.map((product, index) => (
+                            <Link href={product.href} key={`product-${index}`} className="p-2 text-xl xl:text-2xl text-left flex items-center justify-between cursor-pointer" aria-label={product.ariaLabel}>{product.label}</Link>
+                        ))
+                    }  
+                </div>
+                <div className="flex flex-col items-start justify-start gap-1">
+                    <h3 className="text-xl font-bold mt-5 xl:text-4xl">Empresa </h3>
+                    <Link href="/contacto" className="text-lg xl:text-2xl p-2" aria-label="Contacto">Contacto</Link>
+                    <Link href="/#" className="text-lg xl:text-2xl p-2" aria-label="Sobre nosotros">Sobre nosotros</Link>
+                    <span className="flex items-center justify-start md:justify-start gap-3 p-2  text-white mt-4">
+                        {
+                            socialMedia.map((social, index) => (
+                                <a href={social.href} key={`social-${index}`} className="hover:shadow-[0_1px_5px_rgba(255,255,255,0.3)]">
+                                    <Image       
+                                        loading="lazy"
+                                        aria-label={social.ariaLabel}
+                                        src={social.img}
+                                        alt={social.alt}
+                                        width={600}
+                                        height={600}
+                                        className="w-6 h-6 xl:w-10 xl:h-10"
+                                    />
+                                </a>
+                            ))
+                        }
+                    </span> 
+                </div>
+            </section>
+            <div className="flex flex-col items-center justify-center w-full">
+                <hr className="w-full h-[1px] bg-white my-5" />
+                <p className="text-white text-xl uppercase w-full xl:text-4xl text-center mb-2"><b >Coradir S.A.</b>  </p>
+                <p className="text-white text-xs xl:text-xl uppercase w-full text-center ">© Todos los derechos reservados.</p>
+            </div>
         </footer>
     )
 }
