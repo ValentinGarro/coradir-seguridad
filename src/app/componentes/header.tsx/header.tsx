@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import MenuMobile from "./components/menuMobile";  
 import { useMediaQuery } from "@/hooks/useMediaQury";
-
+import Link from "next/link";
 export default function Header() {
     const [show, setShow] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -44,7 +44,7 @@ export default function Header() {
             `}
             >
                 <div className="container flex justify-between items-center">
-                    <h1 className="text-white text-xl uppercase"><b >Coradir</b> <i className="text-white/80">Seguridad</i></h1>
+                    <Link href="/" className="text-white text-xl uppercase"><b >Coradir</b> <i className="text-white/80">Seguridad</i></Link>
                     <button 
                         className="flex flex-col gap-1 items-center justify-between w-10 min-h-9 p-2 py-2.5 rounded-full border-1 transition-all duration-300"
                         aria-label="Menu"
