@@ -112,7 +112,7 @@ export default function Contact() {
         setLoading(false);
     }; 
     return (
-        <section className="flex flex-col pt-30 justify-start items-center container   min-h-[100vh]"
+        <section className="flex flex-col pt-30 md:pt-40 py-10 justify-start items-center max-w-[1800px] mx-auto min-h-[100vh]  "
             style={{
                 backgroundImage: "url('/img/02.png')",
                 backgroundSize: "cover",
@@ -120,8 +120,8 @@ export default function Contact() {
                 backgroundRepeat: "no-repeat",
             }}
         >
-            <section className="w-[90%] flex flex-col items-center">
-                <h1 className="text-red text-5xl font-bold text-shadow">COMUNICATE<br/> CON NOSOTROS</h1>
+            <section className="w-[90%] flex flex-col items-center ">
+                <h1 className="text-red text-5xl md:text-6xl font-bold text-shadow  ">COMUNICATE<br className="md:hidden"/> CON NOSOTROS</h1>
                 { loading ? (
                     <Loader/>
                 ):(submitMessage.type === 'success' ? (
@@ -130,7 +130,7 @@ export default function Contact() {
                          
                     </section>
                     ):(
-                        <form onSubmit={handleSubmit(onSubmit)} className="py-5 flex flex-col items-center w-[80%]">
+                        <form onSubmit={handleSubmit(onSubmit)} className="py-5 flex flex-col items-center w-[80%] md:w-[50%]">
                             {submitMessage.type === 'error' && (
                                     <div className="mb-6 p-4 rounded-md text-sm bg-red-light text-white md:text-xl text-shadow">
                                         {submitMessage.text}
@@ -147,7 +147,7 @@ export default function Contact() {
                             <button 
                                 type="submit" 
                                 disabled={isSubmitting || Object.keys(errors).length > 0}
-                                className="py-5 w-full mx-auto bg-red-light text-white rounded-2xl uppercase"
+                                className="py-5 my-8 w-full md:w-[50%] mx-auto bg-red-light text-white rounded-2xl uppercase"
                                 style={{
                                     opacity: isSubmitting || Object.keys(errors).length > 0 ? 0.7 : 1,
                                     cursor: isSubmitting || Object.keys(errors).length > 0 ? 'not-allowed' : 'pointer'

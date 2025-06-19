@@ -11,16 +11,16 @@ export default function SafeSection() {
     return (
         <section className="flex flex-col items-start justify-start max-w-[1800px]  mx-auto gap-5 pb-10">
             <div className="w-full  bg-red p-8 xl:px-30" ref={titleRef}>
-                {/*visible en mobile*/}
+                {/*Mobile*/}
                 <motion.div
                     initial={{ width: "34%" }}
                     animate={isTitleInView ? { width: ["34%","100%"] } : {}}
                     transition={{ duration: 1.3, ease: "easeOut" }}
                     className="overflow-hidden w-full h-9 xl:hidden  "
                 >
-                    <h2 className="text-4xl   text-white text-left w-[80vw] ">  <b >SOMOS </b>  <i>SEGURIDAD</i> </h2> 
+                    <h2 className="text-4xl   text-white text-left w-[80vw] sm:w-[50vw] md:w-[45vw]">  <b >SOMOS </b>  <i>SEGURIDAD</i> </h2> 
                 </motion.div>
-                {/*visible en desktop*/}
+                {/*Desktop*/}
                 <motion.div
                     initial={{ width: "10%" }}
                     animate={isTitleInView ? { width: ["14%","40%"] } : {}}
@@ -37,7 +37,7 @@ export default function SafeSection() {
                 />
 
             </div>
-            <section className="w-[70%] mx-auto flex flex-col items-center justify-center gap-5 xl:gap-16 text-xl xl:text-4xl xl:py-20">
+            <section className="w-[70%] mx-auto flex flex-col items-center justify-center gap-5 xl:gap-16 text-xl xl:text-4xl py-8 xl:py-20">
                 <p className="text-black text-left">
                     En <b>CORADIR S.A.</b> trabajamos desde hace más de 30 años desarrollando soluciones tecnológicas que fortalecen la seguridad ciudadana. 
                 </p>

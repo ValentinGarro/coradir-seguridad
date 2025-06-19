@@ -4,10 +4,10 @@ import BenefitsCard, { BenefitsCardProps } from "./benefitsCard"
 import { motion } from "framer-motion"
 import { useRef } from "react"
 import { useInView } from "framer-motion"
+import { useMediaQuery } from "@/hooks/useMediaQury"
 
-export default function BenefitsSection() {
-    const lineRef = useRef(null);
-    const isImageInView = useInView(lineRef, { amount: 0.5, once: false });
+export default function BenefitsSection({lineBottomRef}: {lineBottomRef: React.RefObject<HTMLDivElement | null>}) { 
+    const isMobile = useMediaQuery("(min-width: 1280px)");
     const benefits:BenefitsCardProps[] = [
         { 
             icon: "/icons/i-05.png", 
@@ -38,37 +38,13 @@ export default function BenefitsSection() {
     const isInView = useInView(linkRef, { amount: 0.5, once: false });
     return (
         <section className="relative flex flex-col items-start justify-start w-[70%] xl:w-full xl:max-w-[1800px] mx-auto gap-5 pb-10">
-            {/* Desaparece en desktop */}
-            <motion.div 
-                className="border-l-4 border-t-4 border-red absolute xl:relative -top-20 max-w-[2em] max-h-[4em] xl:hidden"
-                initial={{ width:0, height:0 }}
-                animate={isImageInView ? { width:"8em", height:"16em", left:"0" } : { }}
-                transition={{   
-                    ease: "easeOut", 
-                    height: { duration: 1 , delay: isImageInView ? 1 : 0  }, 
-                    width: { duration:  1, delay:isImageInView ? 0 : 1 }, 
-                    left: { duration:  1, delay:isImageInView ? 0 : 1 }, 
-                    }}
-                
-            />
-            {/* Aparece en desktop */}
-            <motion.div 
-                className="border-l-8 border-b-8 border-red absolute -top-2  left-[20em] hidden xl:block"
-                initial={{ width:0, height:0 }}
-                animate={isImageInView ? { width:"14em", height:"8em" } : { }}
-                transition={{   
-                    ease: "easeOut", 
-                    width: { duration: 1 , delay: isImageInView ? 1 : 0  }, 
-                    height: { duration:  1, delay:isImageInView ? 0 : 1 }, 
-                    }}
-                
-            />
-            <div className=" w-full xl:pl-[35em]" ref={lineRef}>
+            
+            <div className=" w-full xl:pl-[35em]" ref={lineBottomRef}>
                 <h2 className="text-2xl font-bold text-red text-left xl:text-5xl xl:mt-20  ">BENEFICIOS<br/> CLAVE</h2>  
             </div>
-            <section className="grid grid-cols-1 gap-5 w-full xl:mx-auto xl:grid-cols-4 xl:py-20">
+            <section className="grid grid-cols-1 gap-5 w-full xl:mx-auto md:grid-cols-2 xl:grid-cols-4 xl:py-20">
                 {benefits.map((benefit, index) => (
-                    <BenefitsCard key={index} {...benefit} hr={ index !== benefits.length-1 }/>
+                    <BenefitsCard key={index} {...benefit} hr={ !isMobile ||  index !== benefits.length-1  }/>
                 ))}
             </section>
             <motion.div

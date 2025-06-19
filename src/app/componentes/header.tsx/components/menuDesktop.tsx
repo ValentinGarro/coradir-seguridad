@@ -4,41 +4,42 @@ import { ourSites, products } from "./menuMobile";
 import { motion } from "framer-motion";
 export default function MenuDesktop({isRedBg}: {isRedBg: boolean}) {
     return (
-        <div className="flex justify-start  items-start gap-5 text-white text-xl ">
-            <a href="#" target="_blank" aria-label="Nuestra empresa" className="cursor-pointer hover:border-b-1 hover:border-white w-40">Nuestra empresa</a>
-            <div className="flex flex-col justify-start items-start gap-3 w-40">
-                <span className={`cursor-pointer  ${isRedBg ? 'border-b-1 border-white' : ''}`}>Nuestros sitios</span>
-                <motion.div 
-                initial={{ height: 0 , opacity: 0 ,display: 'none'}}
-                animate={isRedBg ? { height: 'auto',opacity: 1 ,display: 'flex'} : {  }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="flex flex-col items-start gap-2 w-40"
-                >
-                    {
-                        ourSites.map((site, index) => ( 
-                            <Link href={site.href} key={`site-${index}`} className="cursor-pointer text-[18px] h-8 hover:border-b-1 hover:border-white" aria-label={site.ariaLabel}>{site.label}</Link>
-                        ))
-                    }
-                </motion.div>
-            </div>
-            <div className="flex flex-col justify-start items-start gap-3 w-40">
-                <span className={`cursor-pointer  ${isRedBg ? 'border-b-1 border-white' : ''}`}>Productos</span>
-                <motion.div 
-                initial={{ height: 0 , opacity: 0 ,display: 'none'}}
-                animate={isRedBg ? { height: 'auto',opacity: 1 ,display: 'flex'} : {  }}
-                transition={{ duration: 0.3 }}
-                className="flex flex-col items-start gap-2  w-44"
-                >
-                    {
-                        products.map((site, index) => ( 
-                            <Link href={site.href} key={`site-${index}`} className="cursor-pointer text-[18px] hover:border-b-1 hover:border-white" aria-label={site.ariaLabel}>{site.label}</Link>
-                        ))
-                    }
-                </motion.div>
+        <div className="flex flex-col items-start xl:flex-row justify-start gap-5  text-white  text-xl ">
+            <div className="flex items-start gap-5">
+                <a href="#" target="_blank" aria-label="Nuestra empresa" className="cursor-pointer hover:border-b-1 hover:border-white  md:w-42  ">Nuestra empresa</a>
+                <div className="flex flex-col justify-start items-start gap-3  md:w-40  ">
+                    <span className={`cursor-pointer  ${isRedBg ? 'border-b-1 border-white' : ''}`}>Nuestros sitios</span>
+                    <motion.div 
+                    initial={{ height: 0 , opacity: 0 ,display: 'none'}}
+                    animate={isRedBg ? { height: 'auto',opacity: 1 ,display: 'flex'} : {  }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="flex flex-col items-start gap-2 w-40"
+                    >
+                        {
+                            ourSites.map((site, index) => ( 
+                                <Link href={site.href} key={`site-${index}`} className="cursor-pointer md:text-[16px] xl:text-[18px] h-8 hover:border-b-1 hover:border-white" aria-label={site.ariaLabel}>{site.label}</Link>
+                            ))
+                        }
+                    </motion.div>
+                </div>
+                <div className="flex flex-col justify-start items-start gap-3 md:w-40">
+                    <span className={`cursor-pointer  ${isRedBg ? 'border-b-1 border-white' : ''}`}>Productos</span>
+                    <motion.div 
+                    initial={{ height: 0 , opacity: 0 ,display: 'none'}}
+                    animate={isRedBg ? { height: 'auto',opacity: 1 ,display: 'flex'} : {  }}
+                    className="flex flex-col items-start gap-2  w-44"
+                    >
+                        {
+                            products.map((site, index) => ( 
+                                <Link href={site.href} key={`site-${index}`} className="cursor-pointer text-[18px] hover:border-b-1 hover:border-white" aria-label={site.ariaLabel}>{site.label}</Link>
+                            ))
+                        }
+                    </motion.div>
+                </div> 
             </div>
             <Link 
                 href="/contacto" 
-                className="px-5 py-2 -mt-2 bg-red  rounded-xl cursor-pointer border-1 border-red hover:border-white transition-all duration-300 ease-in-out" 
+                className="px-3 py-2 xl:-mt-2 text-center bg-red min-w-62 xl:min-w-70 xl:-mr-1 h-12 md:text-lg xl:text-xl rounded-xl cursor-pointer border-1 border-white/40 hover:border-white transition-all duration-300 ease-in-out" 
                 aria-label="Comunicate con nosotros"
             >Comunicate con nosotros</Link>
         </div>

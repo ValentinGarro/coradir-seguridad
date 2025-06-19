@@ -31,7 +31,7 @@ export default function CustomInput({
                     {...e.field}
                     id={name}
                     ref={ref as React.RefObject<HTMLTextAreaElement>}
-                    className="bg-white/60 rounded-tr-2xl rounded-bl-2xl text-red w-full p-5 focus:outline-none"
+                    className="bg-white/60 rounded-tr-2xl rounded-bl-2xl text-red w-full p-5 md:h-40 focus:outline-none"
                 />
             );
             break;

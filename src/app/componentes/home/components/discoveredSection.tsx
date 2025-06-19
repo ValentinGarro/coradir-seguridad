@@ -23,18 +23,18 @@ export default function DiscoveredSection() {
             </div>
             <div className="py-3 px-8 xl:px-16 xl:py-10 bg-red-light text-white rounded-tr-2xl rounded-bl-2xl">
                 <h3 className="text-2xl xl:text-4xl  font-bold mb-5">Dispositivos de <br className="hidden xl:block"/>alarmas personales</h3>
-                <p className="text-lg mb-8 xl:w-[58%] xl:text-xl"> Nuestro sistema de alarmas personales está diseñado para ofrecer una <b>respuesta
+                <p className="text-lg mb-8 md:w-[70%] xl:w-[58%] xl:text-xl"> Nuestro sistema de alarmas personales está diseñado para ofrecer una <b>respuesta
                     inmediata en situaciones de emergencia</b>, garantizando la seguridad de los ciudadanos
                     y facilitando la labor de las fuerzas de seguridad.
                 </p>
             </div>
-            <div className="relative z-20 flex justify-end items-end w-full -mt-20 xl:-mt-[28%] xl:ml-40 xl:overflow-hidden xl:w-[90%]">
+            <div className="relative z-20 flex justify-end items-end w-full -mt-20 md:-mt-[20%]  xl:-mt-[28%] xl:ml-40 xl:overflow-hidden xl:w-[90%]">
                 <motion.div
                     ref={linkRef}
                     initial={{ scale: 1 }}
                     animate={isInView ? { scale: 1.1   } : { scale: 1  }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                    className="z-10 absolute text-center top-10 left-5 xl:left-5 xl:top-78  py-2 bg-red text-white rounded-xl w-[60%] xl:w-[25%] text-xl cursor-pointer xl:font-bold"
+                    className="z-10 absolute text-center top-10 left-5 md:left-1/12 xl:left-5 md:top-[30%] xl:top-78  py-2 bg-red text-white rounded-xl w-[60%] md:w-[40%] xl:w-[25%] text-xl xl:text-2xl cursor-pointer xl:font-bold"
                 >
                     <Link href="/contacto">¡SABER MÁS!</Link>
                 </motion.div>
@@ -43,7 +43,7 @@ export default function DiscoveredSection() {
                     alt="Imagen del boton de seguridad" 
                     width={1000} 
                     height={1000} 
-                    className="w-50 h-50 object-cover object-[10%_50%] xl:object-cover xl:w-[40em] xl:h-[40em]"
+                    className="w-60 h-70 object-cover object-[10%_50%]   md:w-[30em] md:h-[30em] xl:w-[40em] xl:h-[40em]"
                 />
             </div>
            
