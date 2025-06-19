@@ -16,7 +16,7 @@ export default function MenuDesktop({isRedBg}: {isRedBg: boolean}) {
                     >
                         {
                             ourSites.map((site, index) => ( 
-                                <Link href={site.href} key={`site-${index}`} className="cursor-pointer md:text-[16px] xl:text-[18px] h-8 hover:border-b-1 hover:border-white" aria-label={site.ariaLabel}>{site.label}</Link>
+                                <a target="_blank" href={site.href} key={`site-${index}`} className="cursor-pointer md:text-[16px] xl:text-[18px] h-8 hover:border-b-1 hover:border-white" aria-label={site.ariaLabel}>{site.label}</a>
                             ))
                         }
                     </motion.div>

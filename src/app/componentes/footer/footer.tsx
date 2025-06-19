@@ -14,7 +14,7 @@ export default function Footer() {
                     <h4  className="text-xl w-full text-left font-bold xl:text-4xl" > Nuestros sitios   </h4>
                     {
                     ourSites.map((site, index) => ( 
-                            <Link href={site.href} key={`site-${index}`} className="p-2 text-lg xl:text-2xl text-left" aria-label={site.ariaLabel}>{site.label}</Link>
+                            <a target="_blank" href={site.href} key={`site-${index}`} className="p-2 text-lg xl:text-2xl text-left" aria-label={site.ariaLabel}>{site.label}</a>
                         ))
                     } 
                 </div>
@@ -33,7 +33,7 @@ export default function Footer() {
                     <span className="flex items-center justify-start md:justify-start gap-3 p-2  text-white mt-4">
                         {
                             socialMedia.map((social, index) => (
-                                <a href={social.href} key={`social-${index}`} className="hover:shadow-[0_1px_5px_rgba(255,255,255,0.3)]">
+                                <a href={social.href} target="_blank" key={`social-${index}`} className="hover:shadow-[0_1px_5px_rgba(255,255,255,0.3)]">
                                     <Image       
                                         loading="lazy"
                                         aria-label={social.ariaLabel}

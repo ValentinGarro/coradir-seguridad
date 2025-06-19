@@ -13,7 +13,7 @@ export const ourSites = [
     { href: "#", label:"Energía renovable", ariaLabel:"Energía renovable"  },
     { href: "#", label:"Movilidad Eléctrica", ariaLabel:"Movilidad Eléctrica"  },
     { href: "#", label:"CORADIR Homes", ariaLabel:"CORADIR Homes"  },
-    { href: "#", label:"IACOR", ariaLabel:"IACOR"  },
+    { href: "https://coradir.ai/", label:"IACOR", ariaLabel:"IACOR"  },
 ];
 export const products = [
     { href: "/#alarma-personal", label:"Dispositivos de alarmas personales", ariaLabel:"Dispositivos de alarmas personales"  }, 
@@ -52,7 +52,7 @@ export default function MenuMobile({openMenu}: {openMenu: boolean}) {
                 <div className={`overflow-hidden transition-all duration-300 ${ourSitesMenu ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                     {
                         ourSites.map((site, index) => ( 
-                            <Link href={site.href} key={`site-${index}`} className="p-2 text-xl text-black  text-left flex items-center justify-between cursor-pointer w-56" aria-label={site.ariaLabel}>{site.label}</Link>
+                            <a href={site.href} target="_blank" key={`site-${index}`} className="p-2 text-xl text-black  text-left flex items-center justify-between cursor-pointer w-56" aria-label={site.ariaLabel}>{site.label}</a>
                         ))
                     }
                 </div>
@@ -82,7 +82,7 @@ export default function MenuMobile({openMenu}: {openMenu: boolean}) {
                     <span className="flex items-center justify-start md:justify-start gap-3 pl-2 text-white mt-4">
                         {
                             socialMedia.map((social, index) => (
-                                <a href={social.href} key={`social-${index}`} className="hover:shadow-[0_1px_5px_rgba(255,255,255,0.3)]">
+                                <a href={social.href} target="_blank" key={`social-${index}`} className="hover:shadow-[0_1px_5px_rgba(255,255,255,0.3)]">
                                     <Image       
                                         loading="lazy"
                                         aria-label={social.ariaLabel}
