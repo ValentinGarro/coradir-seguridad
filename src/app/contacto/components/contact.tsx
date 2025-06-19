@@ -112,7 +112,7 @@ export default function Contact() {
         setLoading(false);
     }; 
     return (
-        <section className="flex flex-col pt-30 md:pt-40 py-10 justify-start items-center max-w-[1800px] mx-auto min-h-[100vh]  "
+        <section className="flex flex-col pt-30 md:pt-40 py-10 justify-start items-center max-w-[1800px] mx-auto min-h-[100vh] "
             style={{
                 backgroundImage: "url('/img/02.png')",
                 backgroundSize: "cover",
@@ -121,7 +121,7 @@ export default function Contact() {
             }}
         >
             <section className="w-[90%] flex flex-col items-center ">
-                <h1 className="text-red text-5xl md:text-6xl font-bold text-shadow  ">COMUNICATE<br className="md:hidden"/> CON NOSOTROS</h1>
+                <h1 className="text-white text-5xl md:text-6xl font-bold text-shadow  ">COMUNICATE<br className="md:hidden"/> CON NOSOTROS</h1>
                 { loading ? (
                     <Loader/>
                 ):(submitMessage.type === 'success' ? (
@@ -145,13 +145,10 @@ export default function Contact() {
                                 />
                             ))}  
                             <button 
+                                id="boton-seguridad-contacto"
                                 type="submit" 
                                 disabled={isSubmitting || Object.keys(errors).length > 0}
-                                className="py-5 my-8 w-full md:w-[50%] mx-auto bg-red-light text-white rounded-2xl uppercase"
-                                style={{
-                                    opacity: isSubmitting || Object.keys(errors).length > 0 ? 0.7 : 1,
-                                    cursor: isSubmitting || Object.keys(errors).length > 0 ? 'not-allowed' : 'pointer'
-                                }}
+                                className={`transition-all duration-300 py-5 my-8 w-full md:w-[50%] mx-auto bg-red-light text-white rounded-2xl uppercase ${isSubmitting || Object.keys(errors).length > 0 ? "opacity-70 cursor-not-allowed" : "hover:scale-102 cursor-pointer"}`}
                             >
                                 {isSubmitting ? "Enviando..." : "Enviar"}
                             </button>  

@@ -11,8 +11,8 @@ export default function Header() {
     const [openMenu, setOpenMenu] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
-    const [isRedBg, setIsRedBg] = useState( pathname === "/contacto"); 
     const isMobile = useMediaQuery("(max-width: 768px)");
+    const [isRedBg, setIsRedBg] = useState(pathname === "/contacto"); 
     useEffect(() => {
         if(pathname === "/contacto") return;
         const handleScroll = () => {
@@ -35,7 +35,10 @@ export default function Header() {
         }else{
             setIsRedBg(openMenu)
         }
-    },[openMenu]) 
+    },[openMenu]);
+    useEffect(()=>{
+        setOpenMenu(false);
+    },[pathname]); 
     return (
         <>
             <header

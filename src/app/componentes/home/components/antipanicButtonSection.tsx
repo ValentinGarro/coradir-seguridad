@@ -8,10 +8,11 @@ export default function AntipanicButtonSection({lineBottomRef}: {lineBottomRef: 
     const isInView = useInView(lineRef, { amount: 0.5, once: true});
     const isInViewBottom = useInView(lineBottomRef, { amount: 0.5, once: true });
     return (
-        <section className="flex flex-col justify-start items-start xl:flex-row-reverse bg-white w-[70%] xl:w-[90%] xl:px-20 container mx-auto pb-10 gap-5">  
+        <section  className="flex flex-col justify-start items-start xl:flex-row-reverse bg-white w-[70%] xl:w-[90%] xl:px-20 container mx-auto pb-10 gap-5">  
             <div className="z-10 relative w-full flex flex-col items-start gap-5 xl:w-[70%]">
                 <h2 className="text-2xl font-bold text-red text-left xl:text-5xl">BOTONES<br/> ANTIPÁNICO</h2>  
                 <motion.div 
+                id="alarma-personal"
                   ref={lineRef} 
                   className="block border-r-4 border-b-4 xl:border-b-8 xl:border-r-8 border-red  absolute -top-20 md:-top-22 xl:-top-25 right-9 sm:right-5 md:right-1/5 xl:right-1/6 max-w-30 sm:!max-w-[20em] max-h-[6em] sm:max-h-[7em] md:!max-w-[20em] xl:max-h-[8em] xl:max-w-[20em]" 
                   initial={{ width: 0, height: 0 }}
@@ -58,7 +59,7 @@ export default function AntipanicButtonSection({lineBottomRef}: {lineBottomRef: 
                 initial={{ width: 0, height: 0, y: 0 }}
                 animate={
                     isInViewBottom
-                    ? { width: "12em", height: "10em", y: "8em" }
+                    ? { width: "10em", height: "10em", y: "8em" }
                     : { width: 0, height: 0, y: 0 }
                 }
                 transition={{

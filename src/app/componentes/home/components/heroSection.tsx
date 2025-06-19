@@ -1,12 +1,8 @@
 "use client"
-import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { motion } from "framer-motion"; 
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-export default function HeroSection() {
-    useEffect   (() => {
-        window.scrollTo(0, 0);
-      }, []);
+export default function HeroSection() { 
     const bannerRef = useRef(null); 
     const isInView = useInView(bannerRef, { amount: 0.5, once: false });
     return (

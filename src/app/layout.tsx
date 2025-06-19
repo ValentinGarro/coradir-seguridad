@@ -8,7 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="font-dm ">
+      <body className="font-dm scroll-smooth">
         <Header />
         {children}
         <Footer />

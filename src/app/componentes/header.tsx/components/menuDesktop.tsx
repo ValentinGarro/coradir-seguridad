@@ -4,11 +4,10 @@ import { ourSites, products } from "./menuMobile";
 import { motion } from "framer-motion";
 export default function MenuDesktop({isRedBg}: {isRedBg: boolean}) {
     return (
-        <div className="flex flex-col items-start xl:flex-row justify-start gap-5  text-white  text-xl ">
+        <div className="flex items-start   justify-start gap-5  text-white  text-xl ">
             <div className="flex items-start gap-5">
-                <a href="#" target="_blank" aria-label="Nuestra empresa" className="cursor-pointer hover:border-b-1 hover:border-white  md:w-42  ">Nuestra empresa</a>
                 <div className="flex flex-col justify-start items-start gap-3  md:w-40  ">
-                    <span className={`cursor-pointer  ${isRedBg ? 'border-b-1 border-white' : ''}`}>Nuestros sitios</span>
+                    <span className={`cursor-pointer  ${isRedBg ? 'border-b-1 border-white' : ''}`}>Sobre nosotros</span>
                     <motion.div 
                     initial={{ height: 0 , opacity: 0 ,display: 'none'}}
                     animate={isRedBg ? { height: 'auto',opacity: 1 ,display: 'flex'} : {  }}

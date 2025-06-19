@@ -34,9 +34,9 @@ export default function DiscoveredSection() {
                     initial={{ scale: 1 }}
                     animate={isInView ? { scale: 1.1   } : { scale: 1  }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                    className="z-10 absolute text-center top-10 left-5 md:left-1/12 xl:left-5 md:top-[30%] xl:top-78  py-2 bg-red text-white rounded-xl w-[60%] md:w-[40%] xl:w-[25%] text-xl xl:text-2xl cursor-pointer xl:font-bold"
+                    className="z-10 absolute text-center top-10 left-5 md:left-1/12 xl:left-5 md:top-[30%] xl:top-78  py-2 bg-red text-white rounded-xl w-[60%] md:w-[40%] xl:w-[25%] text-xl xl:text-2xl cursor-pointer xl:font-bold hover:scale-102 transition-all duration-300"
                 >
-                    <Link href="/contacto">¡SABER MÁS!</Link>
+                    <Link id="boton-seguridad-home-1" href="/contacto">¡SABER MÁS!</Link>
                 </motion.div>
                 <Image 
                     src="/img/boton seguridad.png" 

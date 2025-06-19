@@ -55,9 +55,9 @@ export default function SafeSection() {
                 initial={{ scale: 1 }}
                 animate={isLinkInView ? { scale: 1.1   } : { scale: 1  }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="text-red font-bold text-center border-1 border-red-light xl:w-[30%] xl:my-10 rounded-3xl cursor-pointer py-3 w-full"
+                className="text-red font-bold text-center border-1 border-red-light xl:w-[30%] xl:my-10 rounded-3xl cursor-pointer py-3 w-full hover:scale-102 transition-all duration-300"
             > 
-                <Link href="/contacto" >¡SABER MÁS!</Link>
+                <Link id="boton-seguridad-home-2" href="/contacto" >¡SABER MÁS!</Link>
             </motion.div>
             </section>
             

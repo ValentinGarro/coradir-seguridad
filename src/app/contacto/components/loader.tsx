@@ -5,7 +5,7 @@ export default function Loader() {
         display: 'inline-block',
         width: 48,
         height: 48,
-        border: '6px solid var(--color-gray)',
+        border: '6px solid var(--color-red)',
         borderTop: '6px solid transparent',
         borderRadius: '50%',
         animation: 'spin 1s linear infinite',

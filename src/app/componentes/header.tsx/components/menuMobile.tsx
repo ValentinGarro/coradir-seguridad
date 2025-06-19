@@ -16,7 +16,7 @@ export const ourSites = [
     { href: "#", label:"IACOR", ariaLabel:"IACOR"  },
 ];
 export const products = [
-    { href: "#", label:"Dispositivos de alarmas personales", ariaLabel:"Dispositivos de alarmas personales"  }, 
+    { href: "/#alarma-personal", label:"Dispositivos de alarmas personales", ariaLabel:"Dispositivos de alarmas personales"  }, 
 ];
 export default function MenuMobile({openMenu}: {openMenu: boolean}) { 
     useEffect(() => {
