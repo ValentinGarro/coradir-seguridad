@@ -73,7 +73,7 @@ export default function AntipanicButtonSection({lineBottomRef}: {lineBottomRef: 
                 />
                 {/* Desktop */}
                 <motion.div
-                className="origin-top border-l-8 border-b-8 border-red absolute -bottom-10 left-1/4 hidden xl:block"
+                className="origin-top border-l-8 border-b-8 border-red absolute -bottom-10 left-1/4 hidden xl:block 2xl:max-w-[8em]"
                 initial={{ width: 0, height: 0, y: 0 }}
                 animate={
                     isInViewBottom

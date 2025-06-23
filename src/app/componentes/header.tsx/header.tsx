@@ -82,7 +82,7 @@ export default function Header() {
                         <MenuDesktop isRedBg={isRedBg}/>
                     )}
                 </div>
-                <span className="block h-0.5 bg-white w-[99%] xl:w-[88%] rounded-2xl mx-auto  mt-2" style={{display: isRedBg ? 'none' : 'block'}}></span> 
+                <span className="block h-0.5 bg-white w-[99%] md:!hidden rounded-2xl mx-auto  mt-2" style={{display: isRedBg ? 'none' : 'block'}}></span> 
             </header>
             <MenuMobile openMenu={openMenu} />
         </>
