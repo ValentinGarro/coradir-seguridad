@@ -4,7 +4,8 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 export default function AntipanicButtonSection({lineBottomRef}: {lineBottomRef: React.RefObject<HTMLDivElement | null>}) {
     const lineRef = useRef(null);
-
+    const folletoRef = useRef(null);
+    const folletoIsInView = useInView(folletoRef, { amount: 0.5, once: false });
     const isInView = useInView(lineRef, { amount: 0.5, once: true});
     const isInViewBottom = useInView(lineBottomRef, { amount: 0.5, once: true });
     return (
@@ -29,6 +30,23 @@ export default function AntipanicButtonSection({lineBottomRef}: {lineBottomRef: 
                     nuestros botones ante emergencias de violencia.<br/><br/>
                     Proveemos una herramienta de <b>contención, cuidado y prevención.</b>
                 </p> 
+                <motion.div 
+                initial={{ scale: 1 }}
+                animate={folletoIsInView ? { scale: 1.1   } : { scale: 1  }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }} 
+                className="w-[50%] mx-auto xl:block  hidden"
+            > 
+                <a id="boton-seguridad-desktop-descarga-folleto" download href="/Boton-antipanico-folleto.pdf" ref={folletoRef} className="flex items-center justify-center gap-2 text-red font-bold w-full py-1 text-2xl border-1 border-red-light rounded-3xl my-10 hover:scale-105 transition-all duration-300">
+                    FOLLETO 
+                    <Image 
+                        src="/icons/i_01.png" 
+                        alt="Icono de folleto" 
+                        width={1000} 
+                        height={1000}
+                        className="w-12 h-12"
+                    />
+                </a>
+            </motion.div>
             </div>
             <div  
                 className="relative w-fit xl:w-[50%] mx-auto"
