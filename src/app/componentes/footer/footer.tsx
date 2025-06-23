@@ -8,7 +8,7 @@ export default function Footer() {
         return null;
     }
     return (
-        <footer className="flex flex-col items-start justify-start max-w-[1800px] mx-auto bg-red p-10 text-white">
+        <footer className="flex flex-col items-start justify-start  w-full mx-auto bg-red p-10 text-white">
             <section className="flex flex-col xl:flex-row w-full items-start justify-center xl:justify-between xl:px-30">
                 <div className="flex flex-col items-start justify-start gap-1">
                     <h4  className="text-xl w-full text-left font-bold xl:text-4xl" > Nuestros sitios   </h4>

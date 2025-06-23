@@ -8,7 +8,7 @@ export default function HeroSection() {
     return (
         <section className="flex flex-col justify-start items-center bg-white">
             < div
-                className="w-full h-[50vh] md:h-[80vh] xl:h-[100vh] flex flex-col items-end  max-w-[1800px] xl:justify-center justify-end overflow-hidden"
+                className="w-full h-[50vh] md:h-[80vh] xl:h-[100vh] flex flex-col items-end  w-full xl:justify-center justify-end overflow-hidden"
                 style={{
                     backgroundImage: "url('/img/hero.jpg')",
                     backgroundSize: "cover",

@@ -112,7 +112,7 @@ export default function Contact() {
         setLoading(false);
     }; 
     return (
-        <section className="flex flex-col pt-30 md:pt-40 py-10 justify-start items-center max-w-[1800px] mx-auto min-h-[100vh] "
+        <section className="flex flex-col pt-30 md:pt-40 py-10 justify-start items-center w-full mx-auto min-h-[100vh] "
             style={{
                 backgroundImage: "url('/img/02.png')",
                 backgroundSize: "cover",
