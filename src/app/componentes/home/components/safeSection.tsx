@@ -1,13 +1,25 @@
 "use client"
 import Link from "next/link";
 import { motion } from "framer-motion"
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion"
 export default function SafeSection() {
     const titleRef = useRef(null);
     const linkRef = useRef(null);
     const isTitleInView = useInView(titleRef, { amount: 0.5, once: false });
     const isLinkInView = useInView(linkRef, { amount: 0.5, once: false });
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const videoDivRef = useRef(null);
+    const isVideoInView = useInView(videoDivRef, { amount: 0.5, once: false });
+
+    useEffect(() => {
+        if (!videoRef.current) return;
+        if (isVideoInView) {
+            videoRef.current.play();
+        } else {
+            videoRef.current.pause();
+        }
+    }, [isVideoInView]);
     return (
         <section className="flex flex-col items-start justify-start max-w-[1800px]  mx-auto gap-5 pb-10">
             <div className="w-full  bg-red p-8 xl:px-30" ref={titleRef}>
@@ -50,15 +62,28 @@ export default function SafeSection() {
                 <p className="text-black font-bold text-left">
                     El centro de protección y monitoreo responde de forma inmediata ante cualquier emergencia, alertando al contacto o entidad adecuada según las necesidades de la persona afectada
                 </p>
+                
+            </section>
+            <section ref={videoDivRef} className="w-full gap-5 xl:w-[80%] mx-auto flex flex-col items-center justify-center ">
+                <video
+                    ref={videoRef}
+                    loop
+                    muted
+                    src="/videos/seguridad.mp4"
+                    className="w-full"
+                    // No uses autoPlay para que no intente reproducirse antes de estar visible
+                >
+                    Tu navegador no soporta el video.
+                </video>
                 <motion.div
-                ref={linkRef}
-                initial={{ scale: 1 }}
-                animate={isLinkInView ? { scale: 1.1   } : { scale: 1  }}
-                transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="text-red font-bold text-center border-1 border-red-light xl:w-[30%] xl:my-10 rounded-3xl cursor-pointer py-3 w-full hover:scale-102 transition-all duration-300"
-            > 
-                <Link id="boton-seguridad-home-3" href="/contacto" >¡SABER MÁS!</Link>
-            </motion.div>
+                    ref={linkRef}
+                    initial={{ scale: 1 }}
+                    animate={isLinkInView ? { scale: 1.2   } : { scale: 1  }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }} 
+                    className="text-red font-bold relative text-center border-1 border-red-light w-[50%] xl:w-[30%] xl:text-3xl xl:my-10 rounded-3xl cursor-pointer py-3  hover:scale-102 transition-all duration-300"
+                > 
+                    <Link id="boton-seguridad-home-3" href="/contacto" >¡SABER MÁS!</Link>
+                    </motion.div>
             </section>
             
         </section>
