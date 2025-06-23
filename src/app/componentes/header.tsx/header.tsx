@@ -12,7 +12,7 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width: 768px)");
-    const [isRedBg, setIsRedBg] = useState(pathname === "/contacto"); 
+    const [isRedBg, setIsRedBg] = useState(false); 
     useEffect(() => {
         if(pathname === "/contacto") return;
         const handleScroll = () => {
@@ -27,27 +27,22 @@ export default function Header() {
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [lastScrollY]); 
-    useEffect(()=>{
-        if(pathname === "/contacto") return;
-        if(!openMenu){
-            setTimeout(()=>setIsRedBg(false), 500)
-        }else{
-            setIsRedBg(openMenu)
-        }
-    },[openMenu]);
+    }, [lastScrollY,pathname]);  
     useEffect(()=>{
         setOpenMenu(false);
-    },[pathname]); 
+    },[pathname]);  
+    useEffect(() => { 
+        if (isMobile)  setIsRedBg(openMenu || pathname === "/contacto");   
+    }, [openMenu, isMobile, pathname]);
     return (
         <>
             <header
             className={`fixed top-0 left-0 p-4 w-full z-[9999]  xl:left-1/2 xl:-translate-x-1/2 transition-all duration-500
                 ${show ? 'translate-y-0' : '-translate-y-full'}
-                ${isRedBg  ? 'bg-red xl:bg-red/50' : ( scrolled ? 'backdrop-blur-md bg-black/20' : 'bg-transparent xl:bg-red/50')}
+                ${isRedBg  ? 'bg-red xl:bg-red/50' : ( scrolled ? 'backdrop-blur-md bg-black/20' : `bg-transparent xl:bg-red/50`)}
             `}
-            onMouseEnter={() => setIsRedBg(true)}
-            onMouseLeave={() => setIsRedBg(false)}
+            onMouseEnter={!isMobile ? () => setIsRedBg(true) : () => {}}
+            onMouseLeave={!isMobile ? () => setIsRedBg(false) : () => {}}
             >
                 <div className="container flex justify-between items-center md:items-start xl:py-2 ">
                     <Link href="/" className="text-white text-xl xl:text-4xl uppercase"><b >Coradir</b> <i className="text-white/80">Seguridad</i></Link>
