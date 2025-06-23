@@ -54,7 +54,7 @@ export default function BenefitsSection({lineBottomRef}: {lineBottomRef: React.R
                 transition={{ type: "spring", stiffness: 200, damping: 20 }} 
                 className="w-full xl:hidden"
             > 
-                <button className="flex items-center justify-center gap-2 text-red font-bold w-full py-1  border-1 border-red-light rounded-3xl my-10">
+                <a id="boton-seguridad-2-descarga-folleto" download href="/folleto.pdf" className="flex items-center justify-center gap-2 text-red font-bold w-full py-1  border-1 border-red-light rounded-3xl my-10">
                     FOLLETO 
                     <Image 
                         src="/icons/i_01.png" 
@@ -63,7 +63,7 @@ export default function BenefitsSection({lineBottomRef}: {lineBottomRef: React.R
                         height={1000}
                         className="w-12 h-12"
                     />
-                </button>
+                </a>
             </motion.div>
         </section>
     )
