@@ -18,7 +18,7 @@ export default function HeroSection() {
             >
                 <motion.h1 
                 ref={bannerRef}
-                    className="bg-red/30 rounded-bl-3xl text-4xl xl:text-6xl font-bold pl-5   md:pl-20  py-2  w-[90%]  text-left text-white"
+                    className="bg-red/30 rounded-bl-3xl text-4xl xl:text-6xl font-bold pl-5   md:pl-20 xl:py-10 py-2 xl:leading-17 w-[90%]  text-left text-white"
                     initial={{ opacity: 0, x: "50%" }}
                     animate={isInView ? { opacity: 1, x: "0%" } : { opacity: 0, x: "50%" }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
