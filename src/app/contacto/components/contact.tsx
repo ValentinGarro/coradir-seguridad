@@ -101,7 +101,7 @@ export default function Contact() {
             });
         } catch (error : unknown) { 
             const err = error as Error;
-            console.error(error);
+            console.error(err.message);
             setLoading(false);
             setSubmitMessage({
                 type: 'error',
