@@ -99,7 +99,9 @@ export default function Contact() {
                 type: 'success',
                 text: '¡Gracias por tu interés! Hemos recibido tu solicitud y te contactaremos pronto.',
             });
-        } catch (error) { 
+        } catch (error : unknown) { 
+            const err = error as Error;
+            console.error(error);
             setLoading(false);
             setSubmitMessage({
                 type: 'error',
