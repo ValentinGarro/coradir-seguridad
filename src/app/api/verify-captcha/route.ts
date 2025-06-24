@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ ok: true, message: 'Formulario recibido' });
   } catch (error) {
+    console.error('Error al procesar la solicitud:', error);
     return NextResponse.json(
       { error: 'Error procesando la solicitud.' },
       { status: 500 }
