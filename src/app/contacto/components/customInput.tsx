@@ -12,8 +12,7 @@ export default function CustomInput({
     type,
     control,
     errors,
-    ref,
-    options
+    ref, 
 }:{
     name:keyof FormSchema,
     label:string,
@@ -21,7 +20,6 @@ export default function CustomInput({
     control:Control<FormSchema>,
     errors:FieldErrors<FormSchema>,
     ref:React.RefObject<HTMLInputElement | HTMLTextAreaElement | null  >,
-    options?: string[]
 }){
     let render: (e: ControllerRenderArg) => JSX.Element;
     switch(type){ 

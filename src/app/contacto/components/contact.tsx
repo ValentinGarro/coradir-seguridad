@@ -64,10 +64,12 @@ export default function Contact() {
             const verifyCaptchaJson = await verifyCaptcha.json(); 
             if (!verifyCaptchaJson.ok) throw new Error(verifyCaptchaJson.error); 
 
-        }catch(error : any){ 
+        }catch(error : unknown){ 
+            const err = error as Error;
+            console.error(error);
             setSubmitMessage({
                 type: 'error',
-                text: error.message,
+                text: err.message,
             });
             setLoading(false);
             return;
@@ -97,7 +99,9 @@ export default function Contact() {
                 type: 'success',
                 text: '¡Gracias por tu interés! Hemos recibido tu solicitud y te contactaremos pronto.',
             });
-        } catch (error) { 
+        } catch (error : unknown) { 
+            const err = error as Error;
+            console.error(err.message);
             setLoading(false);
             setSubmitMessage({
                 type: 'error',
