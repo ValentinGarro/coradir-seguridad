@@ -13,7 +13,7 @@ services:
       - caddy
     restart: always
     ports:
-      - "3000:1919"
+      - "1919:3000"
     labels:
       - caddy=coradir.ai
       - caddy.reverse_proxy="{{upstreams 3000}}"
