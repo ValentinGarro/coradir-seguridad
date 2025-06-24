@@ -16,7 +16,7 @@ services:
       - "1919:3000"
     labels:
       - caddy=coradir.ai
-      - caddy.reverse_proxy="{{upstreams 3000}}"
+      - caddy.reverse_proxy="{{upstreams }}" //// agregar despues aca el puerto del caddy
     environment:
       - NODE_ENV=production 
       - NEXT_PUBLIC_N8N_WEBHOOK_URL=${NEXT_PUBLIC_N8N_WEBHOOK_URL}
