@@ -32,7 +32,14 @@ export default function Header() {
         setOpenMenu(false);
     },[pathname]);  
     useEffect(() => { 
-        if (isMobile)  setIsRedBg(openMenu || pathname === "/contacto");   
+        if (pathname === "/contacto") {
+            setIsRedBg(true);
+            setShow(true)
+        } else if (isMobile) {
+            setIsRedBg(openMenu);
+        } else {
+            setIsRedBg(false);
+        }   
     }, [openMenu, isMobile, pathname]);
     return (
         <>
