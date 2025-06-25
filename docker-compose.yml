@@ -15,7 +15,7 @@ services:
     ports:
       - "9338:9338"
     labels:
-      - caddy=coradir.ai
+      - caddy=seguridad.coradir.com.ar
       - caddy.reverse_proxy="{{upstreams 9338}}"
     environment:
       - NODE_ENV=production 
