@@ -16,7 +16,7 @@ services:
       - "6115:6115"
     labels:
       - caddy=seguridad.coradir.com.ar
-      - caddy.reverse_proxy="{{upstreams 6001}}"
+      - caddy.reverse_proxy="{{upstreams 6115}}"
     environment:
       - NODE_ENV=production 
       - NEXT_PUBLIC_N8N_WEBHOOK_URL=${NEXT_PUBLIC_N8N_WEBHOOK_URL}
