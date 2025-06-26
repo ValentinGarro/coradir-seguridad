@@ -13,7 +13,7 @@ services:
       - caddy
     restart: always
     ports:
-      - "6001:6001"
+      - "6115:6115"
     labels:
       - caddy=seguridad.coradir.com.ar
       - caddy.reverse_proxy="{{upstreams 6001}}"
