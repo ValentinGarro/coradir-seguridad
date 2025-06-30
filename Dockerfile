@@ -1,6 +1,5 @@
 FROM node:20.10.0-alpine
-WORKDIR /app
-RUN apk add --no-cache python3 make g++
+WORKDIR /app 
 # Declarar ARGs y ENVs
 ARG NEXT_PUBLIC_N8N_WEBHOOK_URL
 ENV NEXT_PUBLIC_N8N_WEBHOOK_URL=${NEXT_PUBLIC_N8N_WEBHOOK_URL}
