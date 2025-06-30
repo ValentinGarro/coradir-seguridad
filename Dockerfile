@@ -1,4 +1,4 @@
-FROM node:20.10.0 
+FROM node:20.10.0-alpine
 WORKDIR /app 
 # Declarar ARGs y ENVs
 ARG NEXT_PUBLIC_N8N_WEBHOOK_URL
